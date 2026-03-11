@@ -8,12 +8,13 @@ int main(int argc, char **argv)
     {
         if(ft_strcmp(argv[1], "add") == 0)
         {
+
             struct credential *my_credential = add_credential();
             if (my_credential != NULL)
                 write_credential(my_credential);
         }
-        //else if(ft_strcmp(argv[1], "list") == 0)
-            //list_credential(); 
+        else if(ft_strcmp(argv[1], "list") == 0)
+            list_credential(); 
         //else if(ft_strcmp(argv[1], "modify") == 0)
             //mod_credential(); 
         //else

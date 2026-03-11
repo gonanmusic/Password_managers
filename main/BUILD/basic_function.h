@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+
 int ft_strcmp(char *s1, char *s2 );
 void ft_putstr(char *str); 
 void ft_putchar(char c);
@@ -21,4 +22,7 @@ int write_credential(struct credential *my_credential);
 struct credential *add_credential();
 void free_credential(struct credential *my_credential);
 int verif_format(char *site);
+int list_credential();
+int connexion(char *str);
+char *first_connexion(); 
 #endif
