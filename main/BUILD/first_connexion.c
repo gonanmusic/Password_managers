@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   first_connexion.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: novella <novella@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/17 16:36:29 by novella           #+#    #+#             */
+/*   Updated: 2026/03/18 13:31:39 by novella          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <stdlib.h>
 #include "basic_function.h"
@@ -23,6 +35,7 @@ char *first_connexion()
     if (len <= 0)
     {
         close(fd);
+        ft_putstr("Password need to be one character or higher");
         return (NULL);
     }
     buffer[len] = '\0';
