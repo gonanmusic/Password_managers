@@ -6,7 +6,7 @@
 /*   By: novella <novella@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 16:36:04 by novella           #+#    #+#             */
-/*   Updated: 2026/03/17 16:36:05 by novella          ###   ########.fr       */
+/*   Updated: 2026/03/31 12:49:06 by novella          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ struct credential *add_credential()
     char buffer_site[255]; 
     len_site = read(0, buffer_site, sizeof(buffer_site) - 1);
     if(len_site > 0)
-    {
+    { 
         buffer_site[len_site] = '\0';
         if(verif_format(buffer_site) == 1)
         {
@@ -48,7 +48,7 @@ struct credential *add_credential()
             free(my_credential);
             return NULL;
         }
-        else
+        else 
             ft_strcpy(my_credential->site, buffer_site);
     }
     else
@@ -75,8 +75,18 @@ struct credential *add_credential()
             free(my_credential);
             return NULL;
         }
-        else
+        else if(my_credential->id != NULL)
+        {
+            //char temp[255];  
+            //ft_strcpy(temp, my_credential->id);
+            //char temp2[255]; 
+            //ft_strcpy(temp2, my_credential->site); 
+            //if(is_already_saved(temp) == 0 && is_already_saved(temp2) == 0)
             ft_strcpy(my_credential->id, buffer_id);
+            //else 
+            //return NULL; 
+        }
+                
     }
     else 
     {

@@ -1,0 +1,5 @@
+google.fr|novella|1234
+google.fr|abcdef|12345
+
+google.fr|abcdef|12345
+Google.com|novella|AETF29032003$

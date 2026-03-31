@@ -4,7 +4,7 @@ OPENSSL_PREFIX = $(shell brew --prefix openssl@3)
 INCLUDES = -I$(OPENSSL_PREFIX)/include
 LDFLAGS = -L$(OPENSSL_PREFIX)/lib
 LIBS = -lcrypto
-SRC = add_credential.c basics_functions.c free_credential.c main.c write_credential.c verif_site_format.c list_credential.c connexion.c first_connexion.c encrypted_credential.c decrypted_credential.c is_first_connexion.c
+SRC = add_credential.c basics_functions.c free_credential.c main.c write_credential.c verif_site_format.c list_credential.c connexion.c first_connexion.c encrypted_credential.c decrypted_credential.c is_first_connexion.c ui.c
 OBJ = $(SRC:.c=.o)
 TARGET = password_manager
 

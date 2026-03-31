@@ -6,7 +6,7 @@
 /*   By: novella <novella@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 16:36:16 by novella           #+#    #+#             */
-/*   Updated: 2026/03/25 22:51:23 by novella          ###   ########.fr       */
+/*   Updated: 2026/03/31 12:42:04 by novella          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ int connexion(char *str);
 char *first_connexion();
 char *encrypt_password_main(char *password);
 char *decrypted_password_main(char *password_entered);
+int is_already_saved(char *str);
 int is_first_connexion();
+void ui_main(); 
 #endif
