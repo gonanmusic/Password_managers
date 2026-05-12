@@ -6,7 +6,7 @@
 /*   By: novella <novella@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 16:36:39 by novella           #+#    #+#             */
-/*   Updated: 2026/03/26 13:22:09 by novella          ###   ########.fr       */
+/*   Updated: 2026/03/31 20:00:40 by novella          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int write_credential(struct credential *my_credential)
     else
     {
         //unsigned char *encrypted_password = encrypt_password(my_credential ->password); 
-        
         write(file_descriptor, my_credential->site, ft_strlen(my_credential->site));
         write(file_descriptor, "|", 1);
         write(file_descriptor, my_credential->id, ft_strlen(my_credential->id));

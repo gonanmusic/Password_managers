@@ -6,7 +6,7 @@
 /*   By: novella <novella@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 16:36:21 by novella           #+#    #+#             */
-/*   Updated: 2026/03/25 22:38:00 by novella          ###   ########.fr       */
+/*   Updated: 2026/03/31 23:07:43 by novella          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,31 @@ int ft_strlen(char *str)
     while(str[i])
         i++;
     return(i);
+}
+
+int read_line(char *buffer, int max_len)
+{
+    int i;
+    char c;
+    ssize_t bytes_read;
+
+    if (!buffer || max_len <= 0)
+        return (-1);
+    i = 0;
+    while (i < max_len - 1)
+    {
+        bytes_read = read(0, &c, 1);
+        if (bytes_read <= 0)
+        {
+            if (i == 0)
+                return ((int)bytes_read);
+            break ;
+        }
+        if (c == '\n')
+            break ;
+        buffer[i] = c;
+        i++;
+    }
+    buffer[i] = '\0';
+    return (i);
 }

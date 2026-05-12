@@ -26,3 +26,15 @@ void    ui_main()
     ft_putstr("**************"); 
     write(1, "\n", 1); 
 }
+
+void    credential_saved()
+{
+    write(1, "\n", 1);
+    ft_putstr("**************");
+    write(1, "\n", 1);
+    ft_putstr("Credential saved !");
+    write(1, "\n", 1);
+    ft_putstr("**************");
+    write(1, "\n", 1);
+};
+

@@ -5,6 +5,8 @@
 int is_first_connexion()
 {
     int fd = open("password_main", O_RDONLY, 0644);
+    if(fd == -1)
+        return(1);
     close(fd); 
-    return(fd); 
+    return(0); 
 }

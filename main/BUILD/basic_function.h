@@ -6,7 +6,7 @@
 /*   By: novella <novella@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 16:36:16 by novella           #+#    #+#             */
-/*   Updated: 2026/03/31 12:42:04 by novella          ###   ########.fr       */
+/*   Updated: 2026/03/31 23:16:08 by novella          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int ft_strcmp(char *s1, char *s2 );
 void ft_putstr(char *str); 
 void ft_putchar(char c);
 char *ft_strcpy(char *dest, char *src);
-int ft_strlen(char *str); 
+int ft_strlen(char *str);
+int read_line(char *buffer, int max_len);
 
 struct credential
 {
@@ -41,4 +42,5 @@ char *decrypted_password_main(char *password_entered);
 int is_already_saved(char *str);
 int is_first_connexion();
 void ui_main(); 
+void credential_saved();
 #endif

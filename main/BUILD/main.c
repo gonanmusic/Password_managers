@@ -6,7 +6,7 @@
 /*   By: novella <novella@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 16:36:35 by novella           #+#    #+#             */
-/*   Updated: 2026/03/31 13:26:16 by novella          ###   ########.fr       */
+/*   Updated: 2026/04/19 21:17:59 by novella          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,41 +19,52 @@
 
 int main()
 {
-    char password[255]; 
-    int is_connected = 0;
-    char entry[2];     
+    char password[129]; 
+    char entry[3]; 
+    ssize_t len_password;
+    ssize_t len_entry;
+    
+    if(is_first_connexion() == 1)
+    {
+        if(first_connexion() == NULL)
+            return(1);
+    }
+    ft_putstr("Enter password :");
+    len_password = read_line(password, sizeof(password));
+    if (len_password <= 0)
+    {
+        ft_putstr("Error while reading password");
+        return (1);
+    }
+    if(connexion(password) != 0)
+    {
+        ft_putstr("Invalid Password");
+        return(1);
+    }
     ui_main(); 
-    
-    read(0, entry, 1); 
-    
+    len_entry = read_line(entry, sizeof(entry));
+    if (len_entry <= 0)
+    {
+        ft_putstr("invalid command");
+        return (1);
+    }
     if(ft_strcmp(entry, "0") == 0)
     {
         system("@cls||clear");
+        struct credential *my_credential = add_credential();
         
-        if(is_first_connexion() <= 0)
-            first_connexion();
-        else
+        if (my_credential == NULL)
         {
-            ft_putstr("Enter password :");
-            read(0, password, 129);
-            password[strcspn(password, "\n")] = '\0';
-            is_connected = connexion(password);
-            
-            if(is_connected == 0)
-            {
-                struct credential *my_credential = add_credential();
-                if (my_credential != NULL)
-                write_credential(my_credential);
-            }
-            else
-                ft_putstr("Wrong Password"); 
-        }
+            ft_putstr("Allocation failed");
+            return(1);
+        } 
+        write_credential(my_credential);
+        system("@cls||clear");  
+        credential_saved();         
     }
     else if(ft_strcmp(entry, "1") == 0)
-        list_credential(); 
-        // else if(ft_strcmp(argv[1], "modify") == 0)
-        //     mod_credential();  // Function not implemented yet
+        list_credential();    
     else
-        ft_putstr("invalid command"); 
+        ft_putstr("invalid command");
     return(0); 
 }

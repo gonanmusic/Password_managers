@@ -6,11 +6,10 @@
 /*   By: novella <novella@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 16:36:29 by novella           #+#    #+#             */
-/*   Updated: 2026/03/25 23:01:23 by novella          ###   ########.fr       */
+/*   Updated: 2026/04/19 21:34:04 by novella          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <stdlib.h>
 #include "basic_function.h"
 
@@ -27,23 +26,21 @@ char *first_connexion()
     if (fd == -1)
     {
         ft_putstr("Problem finding PASSWORD");
-        return (NULL);
+        return(NULL);
     }
 
-    ft_putstr("Create password : ");
-    len = read(0, buffer, sizeof(buffer) - 1);
-    if (len <= 0)
+    ft_putstr("Create password \n");
+    ft_putstr("Choose a password with at least 8 characters : ");
+    len = read_line(buffer, sizeof(buffer));
+    if (len <= 7)
     {
         close(fd);
-        ft_putstr("Password need to be one character or higher");
-        return (NULL);
+        ft_putstr("Impossible to read password"); 
+        return(NULL);
     }
-    buffer[len] = '\0';
-
     i = 0;
-    while (buffer[i] && buffer[i] != '\n')
+    while (buffer[i])
         i++;
-    buffer[i] = '\0';
 
     j = 0;
     while (buffer[j])
@@ -52,12 +49,11 @@ char *first_connexion()
         j++;
     }
     final_password[j] = '\0';
-
+    
     char *final_password_encrypted = encrypt_password_main(final_password);
 
     write(fd, final_password_encrypted, ft_strlen(final_password_encrypted));
-    write(fd, "\n", 1);
+    write(fd, "\n", 1);        
     close(fd);
-    
     return (final_password_encrypted);
 }
